@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR" translate="no">
+<head>
+<meta charset="UTF-8">
+<meta name="google" content="notranslate">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#090403">
+<meta name="rating" content="adult">
+<meta name="rating" content="RTA-5042-1996-1400-1577-RTA">
+<meta name="description" content="Collabs do Mr. Angel — perfis parceiros.">
+<title>Collabs · Mr. Angel</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23080403'/%3E%3Cellipse cx='32' cy='13' rx='13' ry='3.8' fill='none' stroke='%23ffbe55' stroke-width='2.6'/%3E%3Cpath d='M21 48 L32 21 L43 48 M25 39 H39' fill='none' stroke='%23ff9933' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M42 46 C48 51, 52 42, 56 45' fill='none' stroke='%23ff4500' stroke-width='2.6' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:dark;
+  --noite:#090403;--ouro:#ecd09a;--laranja:#ff8f3c;--brasa:#ff5a1f;--carmim:#c9281c;
+  --creme:#f6e8d4;--suave:#cdb9a6;--pad:clamp(16px,5vw,24px);
+  --degrade:linear-gradient(90deg,var(--ouro) 0%,var(--laranja) 52%,var(--carmim) 100%);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+::selection{background:rgba(255,143,60,.4);color:#fff}
+body{
+  font-family:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--noite);color:var(--creme);
+  min-height:100vh;min-height:100dvh;display:flex;justify-content:center;
+  overflow-x:hidden;position:relative;
+}
+.fumaca{position:fixed;inset:-15%;pointer-events:none;z-index:1;
+  background:
+    radial-gradient(ellipse at 25% 30%,rgba(165,115,45,.26) 0%,transparent 55%),
+    radial-gradient(ellipse at 78% 35%,rgba(185,38,18,.34) 0%,transparent 58%),
+    radial-gradient(ellipse at 82% 85%,rgba(215,75,15,.32) 0%,transparent 55%),
+    radial-gradient(ellipse at 20% 80%,rgba(110,75,35,.22) 0%,transparent 55%);
+  filter:blur(28px);animation:deriva 14s ease-in-out infinite alternate}
+@keyframes deriva{0%{transform:translate(0,0) scale(1)}100%{transform:translate(3%,-4%) scale(1.1)}}
+.brasas{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.brasa{position:absolute;bottom:-20px;width:3px;height:11px;border-radius:50%;
+  background:linear-gradient(to top,#ff3c00,#ffbe55);
+  box-shadow:0 0 8px #ff5500,0 0 14px #ff9e3d;animation:sobeBrasa linear infinite}
+@keyframes sobeBrasa{
+  0%{transform:translateY(0) translateX(0) scale(.7);opacity:0}
+  15%{opacity:1}85%{opacity:.9}
+  100%{transform:translateY(-110vh) translateX(35px) scale(1.1);opacity:0}}
+
+/* ===== Confirmação +18 (nesta página) ===== */
+#gate{position:fixed;inset:0;z-index:99;display:flex;align-items:center;justify-content:center;padding:20px;
+  background:rgba(9,4,3,.66);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);transition:opacity .45s ease}
+#gate.saindo{opacity:0;pointer-events:none}
+.gate-box{width:100%;max-width:360px;text-align:center;padding:28px 24px;border-radius:24px;
+  background:rgba(14,6,4,.8);box-shadow:0 0 44px rgba(255,100,30,.16);position:relative}
+.gate-box::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:var(--degrade);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);pointer-events:none}
+.gate-badge{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1.5px solid var(--laranja);color:var(--ouro);font-size:15px;font-weight:600;margin-bottom:12px;
+  box-shadow:0 0 14px rgba(255,110,30,.45)}
+.gate-title{font-size:19px;font-weight:600;margin-bottom:8px}
+.gate-desc{font-size:13.5px;line-height:1.6;color:var(--suave);margin-bottom:22px}
+.gate-btns{display:flex;flex-direction:column;gap:10px}
+.gate-btns button{font-family:inherit;font-size:14px;border-radius:999px;cursor:pointer;padding:14px 22px}
+.gate-sim{font-weight:600;color:#1c0905;border:none;background:linear-gradient(90deg,var(--ouro),var(--laranja) 55%,var(--brasa));
+  box-shadow:0 0 22px rgba(255,110,30,.4)}
+.gate-nao{font-weight:500;color:var(--suave);background:transparent;border:1px solid rgba(255,143,60,.35)}
+.gate-msg{display:none;margin-top:16px;color:#ff9a7a;font-size:13.5px;line-height:1.5}
+
+/* ===== Página ===== */
+.palco{position:relative;z-index:3;width:100%;max-width:480px;
+  padding:calc(20px + env(safe-area-inset-top,0px)) var(--pad) calc(40px + env(safe-area-inset-bottom,0px))}
+.voltar{display:inline-flex;align-items:center;gap:6px;color:var(--suave);text-decoration:none;
+  font-size:13.5px;font-weight:500;padding:8px 14px 8px 10px;border-radius:999px;
+  border:1px solid rgba(255,143,60,.3);background:rgba(14,6,4,.6);transition:color .2s,border-color .2s}
+.voltar svg{width:16px;height:16px}
+.voltar:hover{color:#fff;border-color:rgba(255,143,60,.8)}
+:focus-visible{outline:2px solid var(--ouro);outline-offset:3px}
+
+.conteudo{opacity:0;transform:translateY(12px);transition:opacity .8s ease,transform .8s cubic-bezier(.22,1,.36,1)}
+body.liberado .conteudo{opacity:1;transform:none}
+
+.logo{display:block;width:min(82%,300px);height:auto;margin:22px auto 6px;
+  filter:drop-shadow(0 0 10px rgba(255,110,30,.5)) drop-shadow(0 0 26px rgba(255,70,20,.3))}
+.topo{text-align:center;margin:6px 0 26px}
+.titulo{font-size:clamp(26px,8vw,32px);font-weight:700;letter-spacing:-.01em;
+  background:var(--degrade);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin-top:6px;font-size:14px;color:var(--suave);line-height:1.6}
+
+.lista{display:flex;flex-direction:column;gap:22px}
+.bloco{position:relative}
+
+/* faixa de letreiro acima do botão (estilo LKabelo) */
+.faixa{display:none;overflow:hidden;white-space:nowrap;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:#33ff7a;margin-bottom:8px;opacity:.85}
+.faixa span{display:inline-block;padding-left:100%;animation:letreiro 14s linear infinite}
+@keyframes letreiro{to{transform:translateX(-100%)}}
+
+.collab{position:relative;display:flex;align-items:center;gap:14px;width:100%;min-height:88px;
+  padding:12px 18px;text-decoration:none;-webkit-tap-highlight-color:transparent;
+  transition:transform .25s ease,box-shadow .25s ease,background .25s ease,letter-spacing .3s ease}
+.collab:hover,.collab:active{transform:translateY(-3px)}
+.collab .foto{flex:none;height:64px;min-width:64px;max-width:120px;display:grid;place-items:center;overflow:hidden}
+.collab .foto img{height:100%;width:auto;max-width:120px;object-fit:contain;display:block}
+.collab .foto .ini{font-weight:700;font-size:22px}
+.collab .nome{flex:1;min-width:0}
+.collab .nome b{display:block;font-size:16px;font-weight:600}
+.collab .nome span{display:block;font-size:12px;margin-top:2px;opacity:.8}
+.collab .acao{flex:none;font-size:12px;font-weight:600;white-space:nowrap}
+.collab .seta{flex:none;width:22px;height:22px;margin-left:2px}
+
+/* ===== SERENA: noite roxa, violeta e rosa, arredondada, brilho que passa ===== */
+.t-serena{border-radius:999px;color:#f3e8ff;overflow:hidden;
+  background:radial-gradient(ellipse at 15% 0%,rgba(150,70,220,.38),transparent 60%),
+             linear-gradient(90deg,#14081f,#22092f);
+  border:1px solid rgba(190,120,255,.7);
+  box-shadow:0 0 18px rgba(164,92,255,.3),inset 0 0 18px rgba(255,79,163,.08)}
+.t-serena::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(105deg,transparent 40%,rgba(255,200,240,.22) 50%,transparent 60%);
+  background-size:250% 100%;background-position:130% 0;animation:brilhoS 6s ease-in-out infinite}
+@keyframes brilhoS{0%,60%{background-position:130% 0}100%{background-position:-30% 0}}
+.t-serena .foto{border-radius:50%;background:#1a0b26;box-shadow:0 0 14px rgba(190,120,255,.55)}
+.t-serena .acao{color:#ffb3dc;text-shadow:0 0 8px rgba(255,79,163,.6)}
+.t-serena .seta{color:#e0b3ff}
+.t-serena:hover{box-shadow:0 0 32px rgba(190,100,255,.65),inset 0 0 22px rgba(255,79,163,.18)}
+
+/* ===== LKABELO: preto esverdeado, verde neon, cantos retos, scanlines, letreiro ===== */
+.t-lkabelo{border-radius:6px;color:#dcffe6;
+  background:repeating-linear-gradient(0deg,rgba(51,255,122,.035) 0 1px,transparent 1px 4px),
+             linear-gradient(90deg,#030a04,#06120a);
+  border:1px solid #33ff7a;
+  box-shadow:0 0 16px rgba(51,255,122,.22),inset 0 0 14px rgba(51,255,122,.06)}
+.t-lkabelo .foto{border-radius:4px;background:#020802;box-shadow:0 0 12px rgba(51,255,122,.45)}
+.t-lkabelo .nome b{text-transform:uppercase;letter-spacing:.12em;font-size:14.5px;color:#7dffaa}
+.t-lkabelo .nome span{text-transform:uppercase;letter-spacing:.08em;font-size:10.5px;color:#a8e9bf}
+.t-lkabelo .nome span::before{content:'\2726  '}
+.t-lkabelo .acao{text-transform:uppercase;letter-spacing:.14em;color:#33ff7a;font-size:11px}
+.t-lkabelo .seta{color:#33ff7a}
+.t-lkabelo:hover{box-shadow:0 0 30px rgba(51,255,122,.6),inset 0 0 20px rgba(51,255,122,.14)}
+.bloco-lkabelo .faixa{display:block}
+
+.rodape{margin-top:30px;text-align:center;font-size:11.5px;color:rgba(205,185,166,.65);line-height:1.6}
+
+@media(min-width:768px){
+  .palco{margin:24px 0;border-radius:28px;box-shadow:0 0 60px rgba(0,0,0,.6);background:rgba(9,4,3,.55)}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .brasas{display:none}
+  .conteudo{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div class="fumaca"></div>
+<div class="brasas" id="brasas" aria-hidden="true"></div>
+
+<!-- Confirmação +18: a lista só aparece depois de confirmar -->
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-titulo">
+  <div class="gate-box">
+    <div class="gate-badge">+18</div>
+    <h2 class="gate-titulo gate-title" id="gate-titulo">Conteúdo adulto</h2>
+    <p class="gate-desc">Esta página contém material destinado apenas a maiores de 18 anos. Você confirma ter 18 anos ou mais?</p>
+    <div class="gate-btns">
+      <button type="button" class="gate-sim" id="gate-sim">Sim, tenho 18 anos ou mais</button>
+      <button type="button" class="gate-nao" id="gate-nao">Não, sou menor de idade</button>
+    </div>
+    <p class="gate-msg" id="gate-msg" role="alert">Acesso restrito. Você precisa ter 18 anos ou mais para ver este conteúdo.</p>
+  </div>
+</div>
+
+<main class="palco conteudo">
+  <a class="voltar" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+    Voltar
+  </a>
+
+  <!-- Logotipo Mr. Angel: aureola e calda -->
+  <svg class="logo" viewBox="0 0 400 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mr. Angel">
+    <defs>
+      <linearGradient id="gLogo" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#ffe6b3"/>
+        <stop offset="50%" stop-color="#ff9933"/>
+        <stop offset="100%" stop-color="#ff3c00"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="200" cy="26" rx="58" ry="11" fill="none" stroke="#ffbe55" stroke-width="5" opacity=".95"/>
+    <ellipse cx="200" cy="26" rx="58" ry="11" fill="none" stroke="#ffe6b3" stroke-width="1.5" opacity=".7"/>
+    <text x="200" y="128" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="58" fill="url(#gLogo)" letter-spacing="-1">Mr. Angel</text>
+    <path d="M338 112 C362 104, 372 124, 362 136 C354 146, 368 152, 382 146" fill="none" stroke="#ff4500" stroke-width="5" stroke-linecap="round"/>
+    <polygon points="378,138 392,146 380,156" fill="#ff4500"/>
+  </svg>
+
+  <header class="topo">
+    <h1 class="titulo">Collabs</h1>
+    <p class="sub">Toque para abrir o perfil da parceria.</p>
+  </header>
+
+  <nav class="lista" id="lista" aria-label="Collabs"></nav>
+
+  <p class="rodape">© 2026 Mr. Angel · Somente para maiores de 18 anos</p>
+</main>
+
+<script>
+/* =====================================================================
+   COMO EDITAR
+   - tema:   "serena" | "lkabelo" (estilo do site da parceira)
+   - nome / desc: textos do botão
+   - acao:   texto do botão à direita (ex.: "Abrir", "Entrar")
+   - url:    site da collab
+   - foto:   logotipo (endereço completo ou arquivo na mesma pasta).
+             Sem foto, aparece a inicial.
+   ===================================================================== */
+var COLLABS = [
+  { tema: "serena",  nome: "Serena",            desc: "Todos os links e conteúdos em um só lugar",
+    acao: "Abrir", url: "https://mrangelofc.github.io/Serena/",
+    foto: "logo-serena.png" },
+  { tema: "lkabelo", nome: "LKabelo Produções", desc: "Links oficiais",
+    acao: "Entrar", url: "https://arkabelo.github.io/Lkabelo/",
+    foto: "logo-lkabelo.png" }
+];
+
+(function(){
+  var gate = document.getElementById('gate');
+  var msg  = document.getElementById('gate-msg');
+
+  function liberar(){
+    gate.classList.add('saindo');
+    setTimeout(function(){ gate.style.display = 'none'; }, 460);
+    document.body.classList.add('liberado');
+  }
+
+  // Mesma confirmação da página principal, válida por 30 dias
+  var jaConfirmou = false;
+  try {
+    var q = parseInt(localStorage.getItem('idade_ok'), 10);
+    jaConfirmou = !!q && Date.now() - q < 30*24*3600*1000;
+  } catch(e) {}
+  if (jaConfirmou) { gate.style.display = 'none'; liberar(); }
+
+  document.getElementById('gate-sim').addEventListener('click', function(){
+    try { localStorage.setItem('idade_ok', String(Date.now())); } catch(e) {}
+    liberar();
+  });
+  document.getElementById('gate-nao').addEventListener('click', function(){
+    msg.style.display = 'block';
+  });
+
+  // ---- Lista de collabs ----
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  var lista = document.getElementById('lista');
+  var SETA = '<svg class="seta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>';
+
+  COLLABS.forEach(function(c){
+    var tema = c.tema || 'serena';
+    var bloco = document.createElement('div');
+    bloco.className = 'bloco bloco-' + tema;
+
+    if (tema === 'lkabelo') {
+      var faixa = document.createElement('div');
+      faixa.className = 'faixa';
+      var frase = c.nome.toUpperCase() + ' ✦ LINKS OFICIAIS ✦ ';
+      faixa.innerHTML = '<span>' + esc(frase.repeat(4)) + '</span>';
+      bloco.appendChild(faixa);
+    }
+
+    var a = document.createElement('a');
+    a.className = 'collab t-' + tema;
+    a.href = c.url; a.target = '_blank'; a.rel = 'noopener noreferrer';
+    a.setAttribute('data-destino', 'collab-' + c.nome.toLowerCase().replace(/\s+/g,'-'));
+    var inicial = esc(c.nome.charAt(0).toUpperCase());
+    a.innerHTML =
+      '<span class="foto">' + (c.foto ? '<img src="'+esc(c.foto)+'" alt="Logotipo '+esc(c.nome)+'">' : '<span class="ini">'+inicial+'</span>') + '</span>' +
+      '<span class="nome"><b>'+esc(c.nome)+'</b><span>'+esc(c.desc||'')+'</span></span>' +
+      '<span class="acao">'+esc(c.acao||'Abrir')+'</span>' + SETA;
+    var img = a.querySelector('img');
+    if (img) img.addEventListener('error', function(){
+      img.parentNode.innerHTML = '<span class="ini">'+inicial+'</span>';
+    });
+    bloco.appendChild(a);
+    lista.appendChild(bloco);
+  });
+
+  // Analytics (se houver um instalado)
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a[data-destino][href]') : null;
+    if (!a) return;
+    var d = a.getAttribute('data-destino');
+    try {
+      if (window.plausible) window.plausible('clique', { props: { destino: d } });
+      if (window.umami && window.umami.track) window.umami.track('clique', { destino: d });
+      if (window.gtag) window.gtag('event', 'clique_link', { destino: d });
+    } catch(err){}
+  });
+
+  // Brasas
+  var reduzir = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var b = document.getElementById('brasas');
+  if (b && !reduzir) {
+    var n = window.innerWidth < 480 ? 24 : 36;
+    for (var i = 0; i < n; i++) {
+      var e = document.createElement('div'); e.className = 'brasa';
+      e.style.left = (Math.random()*100)+'%';
+      e.style.height = (Math.random()*10+6)+'px';
+      e.style.width = (Math.random()*2+2)+'px';
+      e.style.animationDuration = (Math.random()*3+2.2)+'s';
+      e.style.animationDelay = (Math.random()*3)+'s';
+      b.appendChild(e);
+    }
+  }
+})();
+</script>
+</body>
+</html>
